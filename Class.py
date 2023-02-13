@@ -1,3 +1,4 @@
+from datetime import date
 class Demonstration:
     def __init__(self, tr_list):
         self.tr_list = tr_list
@@ -10,20 +11,26 @@ class Demonstration:
         print(f'Это последние 5 -- {last_five[-5:]}')
         self.last_five = last_five
 
-    def collect_and_place_data(self):
+    def collect_and_present_data(self, format ="%d.%m.%Y"):
         for i in (self.last_five[-5:]):
-            date = i['date']
+            date_str = i['date']
+            date_lst = date_str[0:10].split('-')
+            date_format = date(int(date_lst[0]), int(date_lst[1]), int(date_lst[2]))
             description = i['description']
             if 'from' in i:
                 fromm = i['from']
+                fromm_lst = fromm.split(' ')
+                fromm_format = fromm_lst[1][0:4] + " " + fromm_lst[1][4:6] + "** ****" + " " + fromm_lst[1][-4:]
             else:
-                fromm = 'Нет данных'
+                fromm_lst = 'Нет'
+                fromm_format = 'данных'
             if 'to' in i:
                 to = i['to']
+                to_lst = to.split(' ')
+                to_format = '**' + to_lst[1][-4:]
             else:
                 to = 'Нет данных'
-            print(f'{date} {description}\n{fromm} -> {to}\n*********************')
+            print(f'{date_format.strftime(format)} {description}\n{fromm_lst[0]} {fromm_format} -> {to_lst[0]} {to_format}\n')
 
 
-    #def __repr__(self):
-    #    return f'{self.date} {self.description}\n{self.fromm} -> {self.to}'
+
