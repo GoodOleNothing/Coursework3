@@ -8,7 +8,7 @@ class Demonstration:
         for i in self.tr_list:
             if i['state'] == 'EXECUTED':
                 last_five.append(i)
-        print(f'Это последние 5 -- {last_five[-5:]}')
+        #print(f'Это последние 5 -- {last_five[-5:]}')
         self.last_five = last_five
 
     def collect_and_present_data(self, format ="%d.%m.%Y"):
@@ -29,7 +29,8 @@ class Demonstration:
                 to_lst = to.split(' ')
                 to_format = '**' + to_lst[1][-4:]
             else:
-                to = 'Нет данных'
+                to_lst = ['Нет']
+                to_format = 'данных'
             print(f'{date_format.strftime(format)} {description}\n{fromm_lst[0]} {fromm_format} -> {to_lst[0]} {to_format}\n')
 
 
