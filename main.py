@@ -6,6 +6,6 @@ response = requests.get('https://api.npoint.io/e6729ddf2b5e8c56e84a')#Берём
 operations = json.loads(response.text)
 
 
-last_five =looking_for_last_five_executed(operations)
-collect_and_present_data(last_five)
+executed =looking_for_executed(operations)
+collect_and_present_data(executed)
 

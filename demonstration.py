@@ -1,31 +1,32 @@
 from datetime import datetime
 
 
-def looking_for_last_five_executed(operations):
+def looking_for_executed(operations):
     """Собираем последние 5 операций"""
-    last_five = []
+    executed = []
     for i in operations:
         if i['state'] == 'EXECUTED':
-            last_five.append(i)
+            executed.append(i)
 
-    dated_list = []
-    for i in last_five:
-        rrr = datetime.fromisoformat(i['date']).strftime("%d.%m.%Y")
-        i['date'] = rrr
+    #dated_list = []
+    #for i in executed:
+    #    rrr = datetime.fromisoformat(i['date']).strftime("%d.%m.%Y")
+    #    i['date'] = rrr
 
-    srtd = lambda x: (sorted(i['date'] for i in last_five))
-        #dated = lambda x: (sorted)
-        #dated_list.append(dated(i))
-    #    dated = datetime.fromisoformat(str(i['date']))
-    #    dated_list.append(dated.strftime("%d.%m.%Y"))
-    print(last_five)
-    print(srtd(last_five))
-    srtd_last_five = srtd(last_five)
-
-    #srt_by_time= lambda x: (sorted(dated_list))
-    #print(last_five)
-    #print(srt_by_time(dated_list))
-    return srtd_last_five
+    #srtd = lambda x: (sorted(i['date'] for i in executed))
+    #    #dated = lambda x: (sorted)
+    #    #dated_list.append(dated(i))
+    ##    dated = datetime.fromisoformat(str(i['date']))
+    ##    dated_list.append(dated.strftime("%d.%m.%Y"))
+    #print(executed)
+    #print(srtd(executed))
+    #srtd_last_five = srtd(executed)
+#
+    ##srt_by_time= lambda x: (sorted(dated_list))
+    ##print(executed)
+    ##print(srt_by_time(dated_list))
+    print(executed)
+    return executed
 
 
 def collect_and_present_data(last_five, formate_time="%d.%m.%Y"):

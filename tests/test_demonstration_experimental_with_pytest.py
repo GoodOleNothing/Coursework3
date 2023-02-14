@@ -10,4 +10,4 @@ def operations():
     return operations
 
 def test_looking_for_last_five_executed():
-    assert looking_for_last_five_executed(operations) == 22
+    assert looking_for_executed(operations) == 22
