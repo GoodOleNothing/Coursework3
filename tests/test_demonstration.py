@@ -1,5 +1,13 @@
 import pytest
-from demonstration import Demonstration
+import json
+import requests
+from demonstration import *
+response = requests.get('https://api.npoint.io/e6729ddf2b5e8c56e84a')#Берём данные с внешнего ресурса
+operations = json.loads(response.text)
+
+@pytest.fixture()
+def operations():
+    return operations
 
 def test_looking_for_last_five_executed():
-    assert Demonstration.looking_for_last_five_executed([1, {2: {'sdfgf': 'fdg'}}]) == 22
+    assert looking_for_last_five_executed(operations) == 22
