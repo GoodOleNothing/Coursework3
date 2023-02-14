@@ -7,25 +7,6 @@ def looking_for_executed(operations):
     for i in operations:
         if i['state'] == 'EXECUTED':
             executed.append(i)
-
-    #dated_list = []
-    #for i in executed:
-    #    rrr = datetime.fromisoformat(i['date']).strftime("%d.%m.%Y")
-    #    i['date'] = rrr
-
-    #srtd = lambda x: (sorted(i['date'] for i in executed))
-    #    #dated = lambda x: (sorted)
-    #    #dated_list.append(dated(i))
-    ##    dated = datetime.fromisoformat(str(i['date']))
-    ##    dated_list.append(dated.strftime("%d.%m.%Y"))
-    #print(executed)
-    #print(srtd(executed))
-    #srtd_last_five = srtd(executed)
-#
-    ##srt_by_time= lambda x: (sorted(dated_list))
-    ##print(executed)
-    ##print(srt_by_time(dated_list))
-    print(executed)
     return executed
 
 
