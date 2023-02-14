@@ -1,13 +1,8 @@
-import pytest
-import json
-import requests
-from demonstration import *
-response = requests.get('https://api.npoint.io/e6729ddf2b5e8c56e84a')#Берём данные с внешнего ресурса
-operations = json.loads(response.text)
+import unittest
+import demonstration
 
-@pytest.fixture()
-def operations():
-    return operations
+class Testdemonstration(unittest.TestCase):
 
-def test_looking_for_last_five_executed():
-    assert looking_for_last_five_executed(operations) == 22
+    def test_looking_for_last_five_executed(self):
+        self.assertEqual(demonstration.looking_for_last_five_executed([{'state':'EXECUTED'}]), [{'state': 'EXECUTED'}])
+

@@ -4,19 +4,35 @@ from datetime import datetime
 def looking_for_last_five_executed(operations):
     """Собираем последние 5 операций"""
     last_five = []
-
     for i in operations:
         if i['state'] == 'EXECUTED':
             last_five.append(i)
-    #print(f'Это последние 5 -- {last_five[-5:]}')
-    return last_five
+
+    dated_list = []
+    for i in last_five:
+        rrr = datetime.fromisoformat(i['date']).strftime("%d.%m.%Y")
+        i['date'] = rrr
+
+    srtd = lambda x: (sorted(i['date'] for i in last_five))
+        #dated = lambda x: (sorted)
+        #dated_list.append(dated(i))
+    #    dated = datetime.fromisoformat(str(i['date']))
+    #    dated_list.append(dated.strftime("%d.%m.%Y"))
+    print(last_five)
+    print(srtd(last_five))
+    srtd_last_five = srtd(last_five)
+
+    #srt_by_time= lambda x: (sorted(dated_list))
+    #print(last_five)
+    #print(srt_by_time(dated_list))
+    return srtd_last_five
 
 
-def collect_and_present_data(g, formate_time="%d.%m.%Y"):
+def collect_and_present_data(last_five, formate_time="%d.%m.%Y"):
     """Берём последние 5 операций и организуем вывод,
     приводим дату к нужному формату,
     выражаем остальное в нужном формате"""
-    for i in (g[-5:]):
+    for i in (last_five[-5:]):
         date_str = i['date']
         date_format = datetime.fromisoformat(date_str)
         description = i['description']
