@@ -1,5 +1,5 @@
 from datetime import datetime
-
+#operations = operations(datetime.fromisoformat("2019-02-27T03:59:25.921176"), key=lambda x: x["date"], reverse=True)
 
 def looking_for_executed(operations):
     """Собираем последние 5 операций"""
@@ -7,14 +7,15 @@ def looking_for_executed(operations):
     for i in operations:
         if i['state'] == 'EXECUTED':
             executed.append(i)
-    return executed
+    executed.sort(key=lambda x: x['date'], reverse=True)
+    return executed[:5]
 
 
-def collect_and_present_data(last_five, formate_time="%d.%m.%Y"):
+def collect_and_present_data(executed, formate_time="%d.%m.%Y"):
     """Берём последние 5 операций и организуем вывод,
     приводим дату к нужному формату,
     выражаем остальное в нужном формате"""
-    for i in (last_five[-5:]):
+    for i in executed:
         date_str = i['date']
         date_format = datetime.fromisoformat(date_str)
         description = i['description']
