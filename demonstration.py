@@ -1,11 +1,9 @@
 from datetime import datetime
 def looking_for_executed(operations):
     """Собираем последние 5 операций"""
-
-    #operations = sorted(operations, key=lambda x: x["date"], reverse=True)
     executed = []
     for i in operations:
-        if i['state'] == 'EXECUTED':
+        if i['state'] == 'EXECUTED' and 'date' in i:
             executed.append(i)
     executed.sort(key=lambda x: x['date'], reverse=True)
     return executed[:5]
